@@ -1,17 +1,23 @@
-name: CI
-
-on: [push]
-
+on:
+  push:
+    branches:    
+      - master
+name: tf-lint docker build
 jobs:
-  build:
-
+  tf-lintIsMaster:
+    name: tf-lint is master
     runs-on: ubuntu-latest
-
     steps:
-    - uses: actions/checkout@v1
-    - name: Run a one-line script
-      run: echo Hello, world!
-    - name: Run a multi-line script
-      run: |
-        echo Add other actions to build,
-        echo test, and deploy your project.
+    - uses: actions/checkout@master
+    - name: tf-lint action
+      uses: docker://cdssnc/touched-github-action:latest
+      with:
+        args: tf-lint/**
+    - name: build tf-lint
+      uses: actions/docker/cli@8cdf801b322af5f369e00d85e9cf3a7122f49108
+      with:
+        args: build -t cdssnc/tf-lint-github-action ./tf-lint
+    - name: push tf-lint
+      uses: actions/docker/cli@8cdf801b322af5f369e00d85e9cf3a7122f49108
+      with:
+        args: push cdssnc/tf-lint-github-action
