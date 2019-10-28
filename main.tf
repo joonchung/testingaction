@@ -3,7 +3,7 @@ provider "google" {
 }
 
 resource "google_monitoring_uptime_check_config" "http" {
-  display_name = "http-uptime-check"
+  display_name = http-uptime-check
   timeout = "60s"
   project = "firestore-test-3"
   http_check {
