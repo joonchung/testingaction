@@ -11,5 +11,9 @@ jobs:
     - uses: actions/checkout@v1
     - name: Run tflint with reviewdog
       run:  |
-        curl -L "$(curl -s https://api.github.com/repos/wata727/tflint/releases/latest | grep -o -E "https://.+?_linux_amd64.zip")" > tflint.zip && unzip tflint.zip && rm tflint.zip
+        wget https://github.com/wata727/tflint/releases/download/v0.12.1/tflint_darwin_amd64.zip
+        unzip tflint_darwin_amd64.zip
+        mkdir -p /usr/local/tflint/bin
+        export PATH=/usr/local/tflint/bin:$PATH
+        install tflint /usr/local/tflint/bin
         tflint -v
