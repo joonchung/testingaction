@@ -24,9 +24,5 @@ jobs:
         run: |
           terraform init
       - name: tflint
-        uses: reviewdog/action-tflint@master
-        with:
-          github_token: ${{ secrets.github_token }}
-          reporter: github-pr-review # Change reporter
-          flags: "--deep" # Optional
-
+        uses: cdssnc/tf-lint-github-action@master
+       
