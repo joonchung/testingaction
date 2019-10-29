@@ -11,4 +11,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Terraform format
-      uses: cds-snc/github-actions/tf-lint
+      uses: cds-snc/github-actions/tf-lint@master
