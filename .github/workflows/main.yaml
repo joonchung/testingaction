@@ -7,8 +7,12 @@ on:
 
 jobs:
   tf_fmt:
-    name: format
+    name: Validate Validate
     runs-on: ubuntu-latest
     steps:
-    - name: Terraform format
-      uses: cds-snc/github-actions/tf-lint@master
+    - name: Terraform Validate
+      uses: hashicorp/terraform-github-actions/validate@v0.3.7
+    - name: Terraform fmt
+      uses: hashicorp/terraform-github-actions/fmt@v0.3.7
+    - name: Terraform plan
+      uses: hashicorp/terraform-github-actions/plan@v0.3.7
