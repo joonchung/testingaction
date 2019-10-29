@@ -27,6 +27,6 @@ jobs:
       - name: tflint
         uses: reviewdog/action-tflint@master
         with:
-          github_token: ${{ secrets.github_token }}
+          github_token: ${{ secrets.my_token }}
           reporter: github-pr-review # Change reporter
           flags: "--deep" # Optional
