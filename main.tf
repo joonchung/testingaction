@@ -21,6 +21,6 @@ resource "google_monitoring_uptime_check_config" "http" {
   }
 
   content_matchers {
-    content = "example"
+    content = example
   }
 }
