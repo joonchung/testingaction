@@ -10,5 +10,5 @@ jobs:
     name: Validate Validate
     runs-on: ubuntu-latest
     steps:
-    - name: Terraform Validate
-      uses: docker://cds-snc/github-actions/tf-lint@master
+    - name: Run tflint with reviewdog
+      uses: reviewdog/action-tflint@v1.0.0
