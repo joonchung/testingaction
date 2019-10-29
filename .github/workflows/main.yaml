@@ -15,6 +15,5 @@ jobs:
       uses: hashicorp/terraform-github-actions/validate@v0.3.7
     - name: Terraform format
       uses: hashicorp/terraform-github-actions/validate@v0.3.7
-      env: GITHUB_TOKEN = ${{ secrets.INPUT_GITHUB_TOKEN }}
     - name: Terraform init
       uses: hashicorp/terraform-github-actions/init@v0.3.7
