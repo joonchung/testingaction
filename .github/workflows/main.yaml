@@ -11,8 +11,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Terraform Validate
-      uses: hashicorp/terraform-github-actions/validate@v0.3.7
-    - name: Terraform fmt
-      uses: hashicorp/terraform-github-actions/fmt@v0.3.7
-    - name: Terraform plan
-      uses: hashicorp/terraform-github-actions/plan@v0.3.7
+      uses: cds-snc/github-actions/tf-lint@master
