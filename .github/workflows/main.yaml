@@ -24,7 +24,7 @@ jobs:
         run: |
           terraform init
       - name: tflint
-        uses: vlaaaaaaad/tflint-action@master
+        uses: reviewdog/action-tflint@master
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           reporter: github-pr-review # Change reporter
