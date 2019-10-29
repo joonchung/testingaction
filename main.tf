@@ -7,7 +7,7 @@ resource "google_monitoring_uptime_check_config" "http" {
   timeout = "60s"
   project = "firestore-test-3"
   http_check {
-    path = "/some-path"
+    path = "/some-path
     port = "8010"
   }
 
