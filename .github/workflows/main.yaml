@@ -23,7 +23,6 @@ jobs:
       - name: Terraform init
         run: |
           terraform init
-          export REVIEWDOG_GITHUB_API_TOKEN=${ secrets.INPUT_GITHUB_TOKEN }
       - name: tflint
         uses: reviewdog/action-tflint@master
         with:
