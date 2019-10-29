@@ -23,10 +23,3 @@ jobs:
       - name: Terraform init
         run: |
           terraform init
-
-      - name: tflint
-        uses: reviewdog/action-tflint@master
-        with:
-          github_token: ${{ secrets.INPUT_GITHUB_TOKEN }}
-          reporter: github-pr-review # Change reporter
-          flags: "--deep" # Optional
