@@ -9,7 +9,6 @@ resource "google_monitoring_uptime_check_config" "http" {
   http_check {
     path = "/some-path"
     port = "8010"}
-
   monitored_resource {
 
     type = "uptime_url"
