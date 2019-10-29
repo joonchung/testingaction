@@ -27,6 +27,8 @@ jobs:
         uses: vlaaaaaaad/tflint-action@master
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
+          reporter: github-pr-review # Change reporter
+          flags: "--deep" # Optional:  
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
        
