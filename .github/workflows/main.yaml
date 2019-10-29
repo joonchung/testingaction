@@ -11,4 +11,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Terraform Validate
-      uses: cds-snc/github-actions/tf-lint@master
+      uses: docker://cds-snc/github-actions/tf-lint@master
