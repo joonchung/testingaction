@@ -13,10 +13,10 @@ resource "google_monitoring_uptime_check_config" "http" {
 
   monitored_resource {
 
-    type = uptime_url"
+    type = "uptime_url"
     labels = {
       project_id = "firestore-test-3"
-      host = "192.168.1.1
+      host = "192.168.1.1"
     }
   }
 
