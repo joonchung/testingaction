@@ -1,22 +1,11 @@
 name: reviewdog
 on: [pull_request]
 jobs:
-  misspell:
-    name: runner / misspell
+  tflint:
+    name: runner / tflint
     runs-on: ubuntu-latest
+
     steps:
-      - name: Check out code.
-        uses: actions/checkout@v1
-      - name: misspell
-        uses: reviewdog/action-misspell@v1
-        with:
-          github_token: ${{ secrets.github_token }}
-          locale: "US"
+      - name: Run tflint with reviewdog
+        uses: reviewdog/action-tflint@v1.0.0
       
-      
-      - name: tflint
-        uses: reviewdog/action-tflint@master
-        with:
-          github_token: ${{ secrets.github_token }}
-          reporter: github-pr-review # Change reporter
-          flags: "--deep" # Optional
