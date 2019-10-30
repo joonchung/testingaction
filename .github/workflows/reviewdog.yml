@@ -18,9 +18,7 @@ jobs:
           chmod +x terraform-install.sh
           ./terraform-install.sh -a
 
-      - name: Terraform init
-        run: |
-          terraform init
+      
       - name: tflint
         uses: reviewdog/action-tflint@master
         with:
