@@ -21,7 +21,6 @@ data "aws_ami" "ubuntu" {
 resource "aws_instance" "web" {
   ami           = "${dasta.aws_ami.ubuntu.id}"
   instance_type = "tsf1.smalasdasddl"
-
   tags = {
     Name = "HelloWorld"
   }
