@@ -22,9 +22,8 @@ jobs:
         run: |
           terraform init
       - name: tflint 
-        uses: reviewdog/action-tflint@v1.0.0
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          reporter: github-pr-review # Change reporter
-          flags: "--deep" # Optional
+        run: |
+          curl -L "$(curl -s https://api.github.com/repos/wata727/tflint/releases/latest | grep -o -E "https://.+?_linux_amd64.zip")" > tflint.zip && unzip tflint.zip && rm tflint.zip
+          tflint -v
+          tflint
           
