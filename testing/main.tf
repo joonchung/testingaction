@@ -1,26 +1,28 @@
-provider "google" {
-  region  = "northamerica-northeast1"
+provider "aws" {
+  region = "us-west-2"
 }
 
-resource "google_monitoring_uptime_check_config" "http" {
-  display_name = "http-uptime-check"
-  timeout = "60s"
-  project = "firestore-test-3"
-  http_check {
-    path = "/some-path"
-    port = "8010"
+data "aws_ami" "ubuntu" {
+  most_recent = true
+
+  filter {
+    name   = "name"
+    values = ["ubuntu/images/hvm-ssd/ubuntu-trusty-14.04-amd64-server-*"]
   }
 
-  monitored_resource {
-
-    type = "uptime_url"
-    labels = {
-      project_id = "firestore-test-3"
-      host = "192.168.1.1"
-    }
+  filter {
+    name   = "virtualization-type"
+    values = ["hvm"]
   }
 
-  content_matchers {
-    content = example
+  owners = ["099720109477"] # Canonical
+}
+
+resource "aws_instance" "web" {
+  ami           = "${data.aws_ami.ubuntu.id}"
+  instance_type = "t2.micro"
+
+  tags = {
+    Name = "HelloWorld"
   }
 }
