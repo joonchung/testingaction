@@ -25,3 +25,6 @@ jobs:
         uses: reviewdog/action-tflint@master
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
+          name: CI
+      - name: Terraform format
+        uses: hashicorp/terraform-github-actions/fmt@v0.3.7
