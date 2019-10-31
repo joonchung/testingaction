@@ -17,6 +17,7 @@ jobs:
           chmod +x terraform-install.sh
           ./terraform-install.sh -a
           cd testing
+          ls
 
       - name: Terraform init
         run: |
