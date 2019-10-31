@@ -2,7 +2,7 @@ name: reviewdog
 on: [pull_request]
 jobs:
   tflint:
-    name: runner / stylelint
+    name: runner / tflint
     runs-on: ubuntu-latest
 
     steps:
@@ -11,11 +11,15 @@ jobs:
         with:
           fetch-depth: 1
 
+      # Install latest Terraform manually as
+      #  Docker-based GitHub Actions are
+      #  slow due to lack of caching
       - name: Install Terraform
         run: |
           curl -LO https://raw.github.com/robertpeteuil/terraform-installer/master/terraform-install.sh
           chmod +x terraform-install.sh
           ./terraform-install.sh -a
+
       - name: Terraform init
         run: |
           terraform init
@@ -23,4 +27,4 @@ jobs:
       - name: tflint
         uses: reviewdog/action-tflint@master
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
+          github_token: ${{ secrets.github_token }}
