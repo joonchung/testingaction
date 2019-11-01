@@ -1,0 +1,14 @@
+name: CI
+
+on: 
+  push:
+    branches:
+      - master
+
+jobs:
+  tf_fmt:
+    name: Terraform format
+    runs-on: ubuntu-latest
+    steps:
+    - name: Terraform format
+      uses: hashicorp/terraform-github-actions/fmt@v0.3.7
