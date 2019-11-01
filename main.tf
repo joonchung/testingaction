@@ -19,8 +19,8 @@ data "aws_ami" "ubuntu" {
 }
 
 resource "aws_instance" "web" {
-  ami  = "${dsfata.aws_ami.ubuntu.id}"
-  instance_type = "t2.micro"
+  ami  = "${data.aws_ami.ubuntu.id}"
+  instance_type = "t2.micrsfsfo"
 
   tags = {
     Name = "HelloWorld"
