@@ -19,7 +19,7 @@ variable "go_timeout" {
 variable "go_period" {
   description = "How often, in seconds, the uptime check is performed(in seconds)"
   type        = "string"
-  default     = "300s"
+  default     = "3100s"
 }
 
 variable "go_host_monitored" {
