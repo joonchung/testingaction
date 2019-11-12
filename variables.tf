@@ -13,7 +13,7 @@ variable "go_uptime_display_name" {
 variable "go_timeout" {
   description = "How long it takes to timeout"
   type        = "string"
-  default     = "10s"
+  default     = "110s"
 }
 
 variable "go_period" {
