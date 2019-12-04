@@ -1,19 +1,20 @@
-name: 'Terraform Pull Request Workflow'
-on:
-  - pull_request
+name: Terraform
+on: [pull_request]
+
 jobs:
-  example:
-    name: 'Terraform Actions'
+  on-pull-request:
+    name: On Pull Request
     runs-on: ubuntu-latest
     steps:
-      - name: 'Checkout'
-        uses: actions/checkout@master
-      - name: 'Terraform Format'
-        uses: hashicorp/terraform-github-actions@master
-        with:
-          tf_actions_version: 0.12.13
-          tf_actions_subcommand: 'fmt'
-          tf_actions_working_dir: '.'
-          tf_actions_comment: true
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    - name: Filter to PR Opened
+      uses: actions/bin/filter@master
+      with:
+        args: "action 'opened|synchronize'"
+
+    - name: Checkout Repo
+      uses: actions/checkout@v1
+
+    - name: Terraform - Validate
+      uses: hashicorp/terraform-github-actions/validate@v0.3.5
+      env:
+        TF_ACTION_WORKING_DIR: "."
