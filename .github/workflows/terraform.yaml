@@ -28,5 +28,5 @@ jobs:
           tf_actions_version: 0.12.13
           tf_actions_subcommand: 'fmt'
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          github_token: ${{ secrets.github_token }}
 
