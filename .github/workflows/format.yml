@@ -1,15 +1,32 @@
-name: Terraform
+name: reviewdog
 on: [pull_request]
-
 jobs:
-  on-pull-request:
-    name: On Pull Request
+  tflint:
+    name: runner / tflint
     runs-on: ubuntu-latest
-    steps:
-    - name: Checkout Repo
-      uses: actions/checkout@v1
 
-    - name: Terraform - Validate
-      uses: hashicorp/terraform-github-actions/validate@v0.3.5
-      env:
-        TF_ACTION_WORKING_DIR: "."
+    steps:
+      - name: Clone repo
+        uses: actions/checkout@master
+        with:
+          fetch-depth: 1
+
+      # Install latest Terraform manually as
+      #  Docker-based GitHub Actions are
+      #  slow due to lack of caching
+      - name: Install Terraform
+        run: |
+          curl -LO https://raw.github.com/robertpeteuil/terraform-installer/master/terraform-install.sh
+          chmod +x terraform-install.sh
+          ./terraform-install.sh -a
+
+      - name: Terraform init
+        run: |
+          terraform init
+
+      - name: tflint
+        uses: reviewdog/action-tflint@master
+        with:
+          github_token: ${{ secrets.github_token }}
+          reporter: github-pr-review # Change reporter
+          flags: "--deep" # Optional
