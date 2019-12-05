@@ -23,7 +23,10 @@ jobs:
       - name: Terraform init
         run: |
           terraform init
-
+      - name: Terraform - Validate
+        uses: hashicorp/terraform-github-actions/validate@v0.3.5
+        env:
+         TF_ACTION_WORKING_DIR: "."
       - name: tflint
         uses: reviewdog/action-tflint@master
         with:
