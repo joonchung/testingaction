@@ -19,7 +19,11 @@ jobs:
           curl -LO https://raw.github.com/robertpeteuil/terraform-installer/master/terraform-install.sh
           chmod +x terraform-install.sh
           ./terraform-install.sh -a
-
+      - name: 'Terraform Format'
+        uses: hashicorp/terraform-github-actions@master
+        with:
+          tf_actions_version: 0.12.13
+          tf_actions_subcommand: 'fmt'
       - name: Terraform init
         run: |
           terraform init
@@ -32,13 +36,4 @@ jobs:
         with:
           github_token: ${{ secrets.github_token }}
           reporter: github-pr-check
-      - name: 'Terraform Format'
-        uses: hashicorp/terraform-github-actions@master
-        with:
-          tf_actions_version: 0.12.13
-          tf_actions_subcommand: 'fmt'
-          tf_actions_working_dir: '.'
-          tf_actions_comment: true
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
