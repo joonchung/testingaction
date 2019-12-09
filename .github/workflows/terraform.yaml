@@ -27,6 +27,8 @@ jobs:
         with:
           tf_actions_version: 0.12.13
           tf_actions_subcommand: 'fmt'
+          tf_actions_working_dir: '.'
+          tf_actions_comment: true
         env:
-          github_token: ${{ secrets.github_token }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
